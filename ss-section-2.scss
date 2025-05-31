@@ -1,0 +1,90 @@
+.ss-section-2 {
+    * {
+        padding: 0;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+        outline: none;
+        min-width: unset;
+        min-height: unset;
+        max-width: unset;
+        max-height: unset;
+    }
+    .ss-inner-container {
+        position: relative;
+        .background-image {
+            display: flex;
+            img,svg {
+                width: 100%;
+                height: 800px;
+                object-fit: cover;
+                object-position: center;
+            }
+        }
+        .ss-content {
+            position: absolute;
+            inset: 0;
+            width: max-content;
+            height: max-content;
+            margin: auto;
+            @media screen and (max-width: 850px) {
+                width: 100%;
+                padding: 0 20px;
+            }
+            .ss-main-title {
+                font-style: normal;
+                font-weight: 700;
+                font-size: 140px;
+                line-height: 90%;
+                text-align: center;
+                letter-spacing: -0.04em;
+                color: #000000;
+                @media screen and (max-width: 1200px) {
+                    font-size: 100px;
+                }
+                @media screen and (max-width: 850px) {
+                    font-size: 60px;
+                }
+            }
+            .ss-rte {
+                font-style: normal;
+                font-weight: 400;
+                font-size: 22px;
+                line-height: 160%;
+                text-align: center;
+                color: #000000;
+                opacity: 0.8;
+                margin: 30px 0;
+                width: 600px;
+                max-width: 100%;
+                margin-inline: auto;
+                @media screen and (max-width: 850px) {
+                    width: 100%;
+                }
+            }
+            .ss-point {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+                list-style: none;
+                flex-wrap: wrap;
+                li {
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 120%;
+                    text-align: center;
+                    color: #000000;
+                    border-right: 1px solid #000;
+                    padding: 0 25px;
+                    @media screen and (max-width: 850px) {
+                        border-right: none;
+                    }
+                    &:last-child {
+                        border-right: none;
+                    }
+                }
+            }
+        }
+    }
+}

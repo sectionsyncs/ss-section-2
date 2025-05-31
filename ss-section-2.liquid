@@ -1,0 +1,94 @@
+{{ 'ss-section-2.scss' | asset_url | stylesheet_tag }}
+<div class="ss-inner-container">
+    <div class="background-image">
+        {% if section.settings.image != blank %}
+            <img src="{{ section.settings.image | img_url: 'master' }}" width="1728" height="1117" alt="{{ section.settings.image.alt }}">        
+        {% else %}
+            <img src="{{ 'ss-section-2-bg.png' | asset_url }}" alt="Background_Default" width="1728" height="1117">
+        {% endif %}
+    </div>
+    <div class="ss-content">
+
+        <h2 class="ss-main-title">
+            {% if section.settings.main_title contains '|' %}
+                {% assign words = section.settings.main_title | split: '|' %}
+                {% for word in words %}
+                    {{ word }}
+                    {% unless forloop.last %}
+                        <br>
+                    {% endunless %}
+                {% endfor %}
+            {% else %}
+                {{ section.settings.main_title }}
+            {% endif %}
+        </h2>
+        <div class="ss-rte rte">
+            {{ section.settings.content }}
+        </div>
+        <ul class="ss-point">
+            {% for block in section.blocks %}
+                <li>
+                    {{ block.settings.text }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div> 
+{% schema %}
+    {
+        "name": "SS Section 2",
+        "class": "ss-section-2",
+        "presets": [
+            {
+                "name":"SS Section 2",
+                "blocks": [
+                    {
+                        "type": "text",
+                    },
+                    {
+                        "type": "text",
+                    },
+                    {
+                        "type": "text",
+                    },
+                    {
+                        "type": "text",
+                    }
+                ]
+            }
+        ],
+        "blocks": [
+            {
+                "type": "text",
+                "name": "Text",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "text",
+                        "label": "Text",
+                        "default": "WEB"
+                    }
+                ]
+            }
+        ],
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "image",
+                "label": "Background Image"
+            },
+            {
+                "type": "text",
+                "id": "main_title",
+                "label": "Main Title",
+                "default": "Redefining Digital | Experiences"
+            },
+            {
+                "type": "richtext",
+                "id": "content",
+                "label": "Content",
+                "default": "<p>Transform your brand, unleash the power of digital with us and turn bold visions into market success</p>"
+            }
+        ]
+    }
+{% endschema %}
